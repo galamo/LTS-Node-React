@@ -11,3 +11,5 @@ async function getCountries() {
   }
 }
 getCountries();
+
+const url2 = "https://randomuser.me/api/?results=10";
