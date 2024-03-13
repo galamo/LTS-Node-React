@@ -28,7 +28,7 @@ Subjects:
 - Promise
 - Async Await
 
-# DevGeekWeek 2023 - Node.js & React
+# Node.js & React
 
 ## Overview
 
