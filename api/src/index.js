@@ -1,5 +1,6 @@
 const express = require("express");
-
+require("dotenv").config();
+console.log(process.env.PORT);
 const { usersRouter } = require("./users");
 const { eventsRouter } = require("./events");
 
@@ -17,6 +18,16 @@ app.use(attachRequestId);
 app.use("/users", usersRouter);
 app.use("/events", eventsRouter);
 
+app.use((error, req, res, next) => {
+  console.log(error.message, res.getHeader("x-request-id"), req.path);
+  return res.send("something went wrong");
+});
+
+app.listen(process.env.PORT, () => {
+  console.log("Api is up!");
+});
+
+// DONT DO THIS !!!!
 // app.get("/short", (req, res) => {
 //   res.send("Short " + new Date().toISOString());
 // });
@@ -25,7 +36,3 @@ app.use("/events", eventsRouter);
 //   for (let index = 0; index < 9999999999; index++) {}
 //   res.send("Long " + new Date().toISOString());
 // });
-
-app.listen(3000, () => {
-  console.log("Api is up!");
-});
