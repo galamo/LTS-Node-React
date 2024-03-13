@@ -1,4 +1,4 @@
-# LTS - Node.js & React
+# LTS - Node.js & React Course ( 2 days )
 
 ### Prerequisites
 
