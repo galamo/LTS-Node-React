@@ -33,6 +33,22 @@
       "year": 2023
     },
     {
+      "brand": "Hyundai",
+      "model": "Grand i10 Nios",
+      "car body": "hatchback",
+      "color": "yellow",
+      "price": "550000$",
+      "year": 2023
+    },
+    {
+      "brand": "Hyundai",
+      "model": "Grand i10 Nios",
+      "car body": "hatchback",
+      "color": "yellow",
+      "price": "220000$",
+      "year": 2023
+    },
+    {
       "brand": "Skoda",
       "model": "Kodiak",
       "car body": "hatchback",

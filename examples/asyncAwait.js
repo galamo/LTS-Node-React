@@ -31,18 +31,16 @@ async function main() {
   const carsFromApi = await getCarsFromServer(2023);
   const finished1 = new Date().getTime();
   console.log(`cars finished at: ${finished1 - start}`);
-  const car1 = carsFromApi[0];
-  const car2 = carsFromApi[1];
-  const price1 = Number(car1?.price?.replace("$", ""));
-  const price2 = Number(car2?.price?.replace("$", ""));
 
-  Promise.all([getCurrentPrice(price1), getCurrentPrice(price2)]).then(
-    (reolvers) => {
-      console.log(reolvers);
-      const finished2 = new Date().getTime();
-      console.log(`cars prices finished at: ${finished2 - start}`);
-    }
+  const promises = carsFromApi.map((car) =>
+    getCurrentPrice(Number(car?.price?.replace("$", "")))
   );
+
+  Promise.all(promises).then((reolvers) => {
+    console.log(reolvers);
+    const finished2 = new Date().getTime();
+    console.log(`cars prices finished at: ${finished2 - start}`);
+  });
   //   const currentPrice = await getCurrentPrice(
   //     Number(carFromApi?.price?.replace("$", ""))
   //   );
