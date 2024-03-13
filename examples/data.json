@@ -30,7 +30,15 @@
       "car body": "hatchback",
       "color": "yellow",
       "price": "30000$",
-      "year": 2018
+      "year": 2023
+    },
+    {
+      "brand": "Skoda",
+      "model": "Kodiak",
+      "car body": "hatchback",
+      "color": "yellow",
+      "price": "10000$",
+      "year": 2023
     },
     {
       "brand": "Honda",

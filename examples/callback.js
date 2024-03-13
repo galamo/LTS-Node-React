@@ -3,16 +3,25 @@ if (Array.isArray(data.cars)) {
   //   console.log(data.cars);
 }
 
-function getCarsFromServer(callbackFunction) {
+function getCarsFromServer(callbackFunction, year) {
   if (typeof callbackFunction !== "function") return;
-  //   validate another param
+  if (typeof year !== "number") return;
 
-  setTimeout(() => {
-    callbackFunction(data.cars);
-  }, 4000);
+  setTimeout(function () {
+    callbackFunction(data.cars.filter((car) => car.year === year));
+  }, 2000);
 }
 console.log("Script Started");
-getCarsFromServer((cars) => {
+getCarsFromServer(function (cars) {
   console.log(cars);
 });
 console.log("Script Ended");
+
+// function a(r) {
+//   return 2 + r;
+// }
+// a(2);
+// const t = (m) => {
+//   return 1 + m;
+// };
+// t(1);
