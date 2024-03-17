@@ -3,10 +3,10 @@ require("dotenv").config();
 console.log(process.env.PORT);
 const { usersRouter } = require("./users");
 const { eventsRouter } = require("./events");
-
+const initConnection = require("./db/connection");
 const { logStarted } = require("./middleware/logStarted");
 const { attachRequestId } = require("./middleware/requestId");
-
+initConnection();
 const app = express();
 
 app.get("/health-check", (req, res) => {
