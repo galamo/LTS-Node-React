@@ -41,6 +41,18 @@ eventsRouter.get("/data", async (req, res, next) => {
   }
 });
 
+eventsRouter.get("/pumps", async (req, res, next) => {
+  try {
+    setTimeout(async () => {
+      const result = await PumpsModel.find();
+      return res.json(result);
+    }, 2000);
+  } catch (error) {
+    console.log("DB ERROR");
+    return next(error);
+  }
+});
+
 eventsRouter.get("/:id", async (req, res, next) => {
   // input validation
   try {
