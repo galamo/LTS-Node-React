@@ -1,7 +1,7 @@
 type PumpProps = {
   serialNumber: string;
   img: string;
-  version: string;
+  version?: string;
   date: string;
   events?: any;
 };
@@ -18,8 +18,8 @@ export default function PumpCard(props: PumpProps) {
         borderRadius: "10px",
       }}
     >
-      <h1>Sid: {props.serialNumber} </h1>
-      <h3>Version {props.version} </h3>
+      <span>Sid: {props.serialNumber} </span>
+      <h3>Version {props.version || "No Version"} </h3>
       <h3>Created at: {props.date} </h3>
       <img
         src={props.img}
