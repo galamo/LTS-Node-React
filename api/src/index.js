@@ -7,6 +7,7 @@ const initConnection = require("./db/connection");
 const { logStarted } = require("./middleware/logStarted");
 const { attachRequestId } = require("./middleware/requestId");
 initConnection();
+const cors = require("cors");
 const app = express();
 
 app.get("/health-check", (req, res) => {
@@ -14,6 +15,7 @@ app.get("/health-check", (req, res) => {
 });
 
 app.use(logStarted);
+app.use(cors());
 app.use(attachRequestId);
 app.use("/users", usersRouter);
 app.use("/events", eventsRouter);

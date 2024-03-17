@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const data = require("./d.json");
+const dataShort = require("./dshort.json");
+const data = require("./dshort.json");
 
 async function seed() {
   console.log("Starting seed...");
@@ -36,7 +37,13 @@ async function seed() {
         PumpEvents: [PumpEvent],
       });
       const TestModel = mongoose.model("pump_data", PumpData);
-      const result = await TestModel.insertMany([data]);
+      const PumpEventsModel = mongoose.model("pump_events_data", PumpData);
+      const result = await TestModel.insertMany([data, dataShort]);
+      const res = await PumpEventsModel.insertMany([
+        ...data.PumpEvents,
+        ...dataShort.PumpEvents,
+      ]);
+
       console.log(result);
       setTimeout(() => {
         process.exit();

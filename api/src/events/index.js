@@ -30,10 +30,11 @@ eventsRouter.get("/temp", async (req, res, next) => {
 
 eventsRouter.get("/data", async (req, res, next) => {
   try {
-    const result = await PumpsModel.find();
-    const pumpEvents = result.map((doc) => doc.PumpEvents);
-
-    return res.json(pumpEvents.flat());
+    const result = await PumpsModel.find({
+      PumpEvents: { $elemMatch: { ActionType: "1" } },
+    });
+    const pumpEvents = result.map((doc) => doc.PumpEvents).flat();
+    return res.json(pumpEvents);
   } catch (error) {
     console.log("DB ERROR");
     return next(error);
