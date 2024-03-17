@@ -2,7 +2,7 @@ const express = require("express");
 const { getEventById } = require("./handlers/getEventById");
 const { getEventsTemperatures } = require("./handlers/getEventsTemperatures");
 const { getEventsByType } = require("./handlers/getEventsByType");
-
+const { PumpsModel } = require("../db/models/pump");
 const eventsRouter = express.Router();
 
 eventsRouter.get("/action-type/:type", async (req, res, next) => {
@@ -24,6 +24,18 @@ eventsRouter.get("/temp", async (req, res, next) => {
     const result = getEventsTemperatures();
     res.json(result);
   } catch (error) {
+    return next(error);
+  }
+});
+
+eventsRouter.get("/data", async (req, res, next) => {
+  try {
+    const result = await PumpsModel.find();
+    const pumpEvents = result.map((doc) => doc.PumpEvents);
+
+    return res.json(pumpEvents.flat());
+  } catch (error) {
+    console.log("DB ERROR");
     return next(error);
   }
 });

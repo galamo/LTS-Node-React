@@ -29,13 +29,13 @@ async function seed() {
   mainConnection()
     .then(async () => {
       console.log("DB Connected");
-      const PumpsModel = new mongoose.Schema({
+      const PumpData = new mongoose.Schema({
         AuthorizationResponse: String,
         TotalResults: Number,
         FilteredResults: Number,
         PumpEvents: [PumpEvent],
       });
-      const TestModel = mongoose.model("pumps", PumpsModel);
+      const TestModel = mongoose.model("pump_data", PumpData);
       const result = await TestModel.insertMany([data]);
       console.log(result);
       setTimeout(() => {
