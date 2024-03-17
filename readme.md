@@ -237,7 +237,15 @@ app.listen(3333);
 3. UseState
 4. UseEffect
 
-
 MongoDb example
 Routing - react
 report
+
+# Run project
+
+- go to dev-apps - run docker compose up
+- go to api - run npm i
+- go to seed - run npm i
+- go to seed - run node index.js
+- go to api - run npm run start-dev
+
