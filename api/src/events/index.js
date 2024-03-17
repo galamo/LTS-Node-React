@@ -28,13 +28,14 @@ eventsRouter.get("/temp", async (req, res, next) => {
   }
 });
 
-eventsRouter.get("/all", async (req, res, next) => {
-  // input validation
+eventsRouter.get("/data", async (req, res, next) => {
   try {
-    console.log("here");
-    const pumpsdata = await PumpsModel.find();
-    return res.json(pumpsdata);
+    const result = await PumpsModel.find();
+    const pumpEvents = result.map((doc) => doc.PumpEvents);
+
+    return res.json(pumpEvents.flat());
   } catch (error) {
+    console.log("DB ERROR");
     return next(error);
   }
 });
